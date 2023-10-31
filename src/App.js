@@ -14,7 +14,7 @@ function App() {
       <div
         style={{ color: "red ", backgroundColor: "yellow", fontSize: "30px" }}
       >
-        lorm ipum
+        lorm ipum dolor.
       </div>
     </>
   );
