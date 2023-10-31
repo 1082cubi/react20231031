@@ -1,21 +1,21 @@
 function App() {
-  const num1 = Math.ceil(Math.random() * 6);
-  const num2 = Math.ceil(Math.random() * 6);
-
-  let messageClassName = "lose";
-  let message = "다시던져보세요";
-
-  if (num1 === num2) {
-    messageClassName = "win";
-    message = "당첨";
-  }
-
+  const myStuyle = {
+    // js object
+    color: "blue",
+    backgroundcolor: "gold", // lowerCamelCase
+    fontSize: "70px",
+    testAlign: "center",
+  }; // js object
   return (
     <>
-      <h1>1번 주사위{num1}</h1>
-      <h1>2번 주사위{num2}</h1>
-
-      <h1 className={messageClassName}>{message}</h1>
+      {/*  style 속성은 객체로 주어야 함 */}
+      <div style={myStuyle}>lorem ipsum dolor</div>
+      <hr />
+      <div
+        style={{ color: "red ", backgroundColor: "yellow", fontSize: "30px" }}
+      >
+        lorm ipum
+      </div>
     </>
   );
 }
