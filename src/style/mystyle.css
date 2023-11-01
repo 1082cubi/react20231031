@@ -2,3 +2,9 @@
     background-color: white;
     color: red;
 }
+.special {
+    border: 5px dotted gold;
+}
+.coffice {
+    color: pink;
+}
