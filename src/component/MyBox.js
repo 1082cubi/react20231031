@@ -1,13 +1,18 @@
-import age from "./MyElem";
+import {city} from "./MyElem";
 
-function MyBox() {
+
+export default function MyBox() {
   return (
+    <>
     <div>
-      <h1>THIS IS MYBOX</h1>
+      <h1></h1>
     </div>
+
+    </>
+
   );
 }
 
-export const country = "프랑스";
 
-export default MyBox;
+
+export default App;
