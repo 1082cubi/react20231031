@@ -1,5 +1,8 @@
+import "../style/style1.css";
 export function MyBox() {
-  return <div>가즈아</div>;
+  return (
+    <div>
+      <h1 className="boxClass">lorem </h1>
+    </div>
+  );
 }
-export const person = { name: "son", address: "seoul" };
-export default MyBox;
