@@ -1,17 +1,13 @@
 import React from "react";
-import { Box, FormControl, FormLabel, Textarea } from "@chakra-ui/react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import { ChakraProvider } from "@chakra-ui/react";
 
-function App(props) {
-  return (
-    <div>
-      <Box w="480px">
-        <FormControl>
-          <FormLabel>본문</FormLabel>
-          <Textarea placeholder="본문을 작성하세요"></Textarea>
-        </FormControl>
-      </Box>
-    </div>
-  );
-}
-
-export default App;
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <ChakraProvider>
+      <App />
+    </ChakraProvider>
+  </React.StrictMode>,
+);
