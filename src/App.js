@@ -15,39 +15,40 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
 function App(props) {
   return (
     <Flex
-      px={{ base: "0px", md: "70px", lg: "120px", xl: "180px" }}
+      px={{ base: "0px", md: "100px", lg: "120px", xl: "180px" }}
       justify="space-between"
-      py="8px"
-      my="10px"
-      bg="gray.100"
     >
-      <Flex gap="7px" align="center">
-        <Text as="b">Navbar</Text>
+      <Flex gap="7px" align="center>">
+        <Text as="b" mt="8px">
+          Navbar
+        </Text>
         <Button variant={"ghost"}>Home</Button>
         <Button variant={"ghost"}>Link</Button>
-
         <Menu>
-          <MenuButton
-            variant="ghost"
-            as={Button}
-            rightIcon={<ChevronDownIcon />}
-          >
-            Dropdown
-          </MenuButton>
-          <MenuList>
-            <MenuItem>Download</MenuItem>
-            <MenuItem>Create a Copy</MenuItem>
-            <MenuItem>Mark as Draft</MenuItem>
-            <MenuItem>Delete</MenuItem>
-            <MenuItem>Attend a Workshop</MenuItem>
-          </MenuList>
+          {({ isOpen }) => (
+            <>
+              <MenuButton
+                isActive={isOpen}
+                as={Button}
+                rightIcon={<ChevronDownIcon />}
+              >
+                {isOpen ? "Close" : "Open"}
+              </MenuButton>
+              <MenuList>
+                <MenuItem>Download</MenuItem>
+                <MenuItem onClick={() => alert("Kagebunshin")}>
+                  Create a Copy
+                </MenuItem>
+              </MenuList>
+            </>
+          )}
         </Menu>
 
         <Button variant={"ghost"} isDisabled={true}>
           Disabled
         </Button>
       </Flex>
-      <Flex gap="7px" align="center">
+      <Flex gap="9px" align="center">
         <Input size="sm" bg="white" colorScheme="green" />
         <Button size="sm" variant="outline" colorScheme="green">
           Search
