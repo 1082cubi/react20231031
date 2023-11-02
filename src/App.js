@@ -1,41 +1,32 @@
-import React from "react";
-import {
-  Button,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { EmailIcon } from "@chakra-ui/icons";
 import * as PropTypes from "prop-types";
+import { Button } from "@chakra-ui/react";
 
-function ModalBdy(props) {
+function Botton(props) {
   return null;
 }
 
-ModalBdy.propTypes = { children: PropTypes.node };
+Botton.propTypes = {
+  colorScheme: PropTypes.string,
+  children: PropTypes.node,
+};
 
 function App() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <Button onClick>모달 열기</Button>
-      <Modal
-        closeOnOverlayClick={false}
-        isOpen={isOpen}
-        onClose={onClose}
-        isCentered
-        motionPreset="slideInBottom"
-      ></Modal>
-      <Modal isOpen={onOpen}>onClose</Modal>
-      <ModalContent>
-        <ModalHeader>모달의 제목</ModalHeader>
-        <ModalBody>dlsfkldkflsdfjdklsjfljdslkfjdlsfjldsjflkjls</ModalBody>
-        <ModalFooter>
-          <Button colorScheme="blue" onClick={onClose}></Button>
-        </ModalFooter>
-      </ModalContent>
+      <Botton colorScheme="blue">lonrem</Botton>
+      <Botton colorScheme="red">lonrem</Botton>
+      <Botton colorScheme="yellow">lonrem</Botton>
+      <Botton colorScheme={"orange"}>lonrem</Botton>
+      <Botton oclorScheme>lonrem</Botton>
+      <Botton colorScheme="teal" size={"sm"}>
+        lonrem
+      </Botton>
+      <Botton variant={"link"}> colorSchlonrem</Botton>
+      <Botton leftIcon={<EmailIcon />}>lonrem</Botton>
+      <Botton isLoading>Temporibus!</Botton>
+      <Botton>lonrem</Botton>
+      <Botton>lonrem</Botton>
     </>
   );
 }
