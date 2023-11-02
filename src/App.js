@@ -1,33 +1,60 @@
-import { EmailIcon } from "@chakra-ui/icons";
-import * as PropTypes from "prop-types";
-import { Button } from "@chakra-ui/react";
+import React from "react";
+import {
+  Box,
+  Center,
+  Checkbox,
+  CheckboxGroup,
+  Flex,
+  FormControl,
+  FormHelperText,
+  FormLabel,
+  Input,
+  Radio,
+  RadioGroup,
+} from "@chakra-ui/react";
 
-function Botton(props) {
-  return null;
-}
-
-Botton.propTypes = {
-  colorScheme: PropTypes.string,
-  children: PropTypes.node,
-};
-
-function App() {
+function App(props) {
   return (
-    <>
-      <Botton colorScheme="blue">lonrem</Botton>
-      <Botton colorScheme="red">lonrem</Botton>
-      <Botton colorScheme="yellow">lonrem</Botton>
-      <Botton colorScheme={"orange"}>lonrem</Botton>
-      <Botton oclorScheme>lonrem</Botton>
-      <Botton colorScheme="teal" size={"sm"}>
-        lonrem
-      </Botton>
-      <Botton variant={"link"}> colorSchlonrem</Botton>
-      <Botton leftIcon={<EmailIcon />}>lonrem</Botton>
-      <Botton isLoading>Temporibus!</Botton>
-      <Botton>lonrem</Botton>
-      <Botton>lonrem</Botton>
-    </>
+    <div>
+      <Center>
+        <Box w={"480px"}>
+          <FormControl>
+            <FormLabel>이름</FormLabel>
+            <Input />
+            <FormHelperText>띄어쓰기 없이 입력하세요.</FormHelperText>
+          </FormControl>
+        </Box>
+      </Center>
+      <Center mt={5}>
+        <Box w="480px">
+          <FormControl>
+            <FormLabel>하나만 선택하세요.</FormLabel>
+            <RadioGroup>
+              <Flex gap={5}>
+                <Radio value="value1">Lorem.</Radio>
+                <Radio value="value2">Lorem.</Radio>
+                <Radio value="value3">Lorem.</Radio>
+                <Radio value="value4">Lorem.</Radio>
+              </Flex>
+            </RadioGroup>
+          </FormControl>
+        </Box>
+      </Center>
+      <Center>
+        <Box w="480px">
+          <FormControl>
+            <CheckboxGroup>
+              <Flex gap={5}>
+                <Checkbox colorScheme="orange">Lorem.</Checkbox>
+                <Checkbox colorScheme="green">Commodi.</Checkbox>
+                <Checkbox colorScheme="purple">Voluptatem.</Checkbox>
+              </Flex>
+            </CheckboxGroup>
+          </FormControl>
+        </Box>
+      </Center>
+    </div>
   );
 }
+
 export default App;
