@@ -1,30 +1,27 @@
 import React from "react";
+import { logDOM } from "@testing-library/react";
 import { Button } from "@chakra-ui/react";
 
-function MyComp({ children, executeClick }) {
-  return <Button onClick={executeClick}>{children}</Button>;
-}
 function App(props) {
-  function func1() {
-    console.log("func1 실행");
+  // 함수면 작성 관습
+  // handle 이벤트명
+
+  function handleClick() {
+    console.log("second");
   }
-  let func2 = () => {
-    console.log("arrow function 실행 111");
-  };
+  function handleMouseEnter() {
+    console.log("thired");
+  }
+  function handleonMouseLeave() {
+    console.log("4th");
+  }
   return (
     <div>
-      <MyComp executeClick={func1}>Button1</MyComp>
-      <MyComp executeClick={func2}>Button2</MyComp>
-      <MyComp
-        executeClick={() => {
-          console.log("arrow function 실행 111");
-        }}
-      >
-        Button3
-      </MyComp>
-      <MyComp executeClick={() => console.log("arrow function 씰행 333")}>
-        Button4
-      </MyComp>
+      <Button onClick={() => console.log("first")}>버튼1</Button>
+      <Button onClick={handleClick}>버튼2</Button>
+      <Button onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseEnter}>
+        버튼3
+      </Button>
     </div>
   );
 }
