@@ -19,7 +19,7 @@ function App(props) {
     <div>
       <Button onClick={() => console.log("first")}>버튼1</Button>
       <Button onClick={handleClick}>버튼2</Button>
-      <Button onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseEnter}>
+      <Button onMouseEnter={handleMouseEnter} onMouseLeave={handleonMouseLeave}>
         버튼3
       </Button>
     </div>
