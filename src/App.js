@@ -1,39 +1,30 @@
-import React from "react";
-import { useImmer } from "use-immer";
-import { Input, Text } from "@chakra-ui/react";
+import React, { useState } from "react";
+import { Box, Button, Text } from "@chakra-ui/react";
+
+function MyComp1() {
+  return (
+    <Box>
+      <Button>텍스트</Button>
+    </Box>
+  );
+}
+
+function MyComp2() {
+  return (
+    <Box>
+      <Text>{message}</Text>
+    </Box>
+  );
+}
 
 function App(props) {
-  const [person, updatePerson] = useImmer({
-    name: "son",
-    address: { city: "seoul", country: "korea" },
-  });
-
-  function handleNameChange(e) {
-    updatePerson((draft) => {
-      draft.name = e.target.value;
-    });
-  }
-
-  function handleCityChange(e) {
-    updatePerson((draft) => {
-      draft.address.city = e.target.value;
-    });
-  }
-
-  function handleCountryChange(e) {
-    updatePerson((draft) => {
-      draft.address.country = e.target.value;
-    });
-  }
-
+  const [message, setMessage] = useState("헬로");
   return (
     <div>
-      <Input value={person.name} onChange={handleNameChange} />
-      <Input value={person.address.city} onChange={handleCityChange} />
-      <Input value={person.address.country} onChange={handleCountryChange} />
-      <Text>
-        {person.name}은 {person.address.country}, {person.address.city} 에 산다
-      </Text>
+      <MyComp1></MyComp1>
+      {/*MyComp1 에 있는 버튼이 클릭되면*/}
+      <MyComp2 message={message}></MyComp2>
+      {/*MyComp2 에 있는 text가 바뀌게 되는*/}
     </div>
   );
 }
