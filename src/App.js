@@ -1,22 +1,49 @@
 import React, { useEffect, useState } from "react";
-import { Button, Input, Text } from "@chakra-ui/react";
+import axios from "axios";
+import { Box, Select, Spinner, Text } from "@chakra-ui/react";
 
 function App(props) {
-  const [number, setNumber] = useState(0);
-  const [text, setText] = useState("");
+  const [customerId, setCustomerId] = useState(0);
+  const [customerName, setCustomerName] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  // 첫번재 파라미터(setup) : The function with your Effect’s logic. 부작용이 있는 함수.
-  // 두번째 파라미터 : setup을 실행시키는 값의 나열(배열)
-  //                 빈 배열이면 첫 렌더링 때만 실행됨
   useEffect(() => {
-    console.log("effect 함수 실행됨");
-  }, [number, text]);
-
+    setIsLoading(true);
+    axios
+      .get("/api/main1/sub4?id=" + customerId)
+      .then(({ data }) => setCustomerName(data))
+      .catch((e) => setCustomerName(null))
+      .finally(() => setIsLoading(false));
+  }, [customerId]);
   return (
     <div>
-      <Button onClick={() => setNumber(number + 1)}>증가</Button>
-      <Text>{number}</Text>
-      <Input value={text} onChange={(e) => setText(e.target.value)} />
+      <Select
+        placeholder="고객번호 선택"
+        onChange={({ target }) => setCustomerId(target.value)}
+      >
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="121">121</option>
+      </Select>
+      <Box>
+        {isLoading && <Spinner />}
+        {isLoading || customerId}
+        <>
+          {customerName === null ? (
+            <Text>고객정보가 아직 없습니다</Text>
+          ) : (
+            <Text>고객 이름은 이거 : {customerName}</Text>
+          )}
+        </>
+      </Box>
     </div>
   );
 }
