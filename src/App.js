@@ -1,30 +1,64 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
+  Outlet,
   Route,
   RouterProvider,
+  useNavigate,
+  useSearchParams,
 } from "react-router-dom";
-import { Box } from "@chakra-ui/react";
+import { Box, Button, Text } from "@chakra-ui/react";
+import axios from "axios";
+
+function Home() {
+  const navigate = useNavigate();
+
+  return (
+    <Box>
+      <Box>
+        <Button onClick={() => navigate("/path1?id=1")}>1번 고객 보기</Button>
+        <Button onClick={() => navigate("/path1?id=2")}>2번 고객 보기</Button>
+        <Button onClick={() => navigate("/path1?id=3")}>3번 고객 보기</Button>
+      </Box>
+      <Box>
+        <Outlet />
+      </Box>
+    </Box>
+  );
+}
+
+function AComp() {
+  const [customer, setCustomer] = useState(null);
+  // query string 을 얻기
+  const [searchParams] = useSearchParams();
+
+  // console.log(searchParams);
+  // console.log(searchParams.get("id"));
+  // console.log(searchParams.toString());
+
+  useEffect(() => {
+    axios
+      .get("/api/main1/sub4?" + searchParams.toString())
+      .then((response) => setCustomer(response.data));
+  }, [searchParams]);
+
+  return (
+    <Box>
+      {customer && (
+        <Text>
+          {searchParams.get("id")} 번 고객명 {customer.name}
+        </Text>
+      )}
+    </Box>
+  );
+}
 
 const routes = createBrowserRouter(
   createRoutesFromElements(
-    <>
-      <Route path="/" element={<Box>home page</Box>} />
-      <Route path="/path1" element={<Box>경로1</Box>} />
-      <Route path="/path2" element={<Box>경로2</Box>} />
-      <Route path="/path3" element={<Box>경로3</Box>} />
-      <Route path="/main1/path1" element={<Box>경로4</Box>} />
-      <Route path="/main1/path2" element={<Box>경로5</Box>} />
-      <Route path="/main2">
-        <Route path="path1" element={<Box>경로6</Box>} />
-        <Route path="path2" element={<Box>경로7</Box>} />
-        <Route path="path3">
-          <Route path="sub1" element={<Box>경로8</Box>} />
-          <Route path="sub2" element={<Box>경로9</Box>} />
-        </Route>
-      </Route>
-    </>,
+    <Route path="/" element={<Home />}>
+      <Route path="path1" element={<AComp />} />
+    </Route>,
   ),
 );
 
